@@ -95,7 +95,7 @@ jobs:
           GH_EMAIL: ${{ github.event.commits[0].author.email }}
           GH_USERNAME: ${{ github.event.commits[0].author.username }}
 
-      - # - name: Open a PR
+# - name: Open a PR
 #   uses: actions/github-script@0.5.0
 #   with:
 #     github-token: ${{secrets.GITHUB_TOKEN}}
