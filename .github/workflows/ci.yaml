@@ -32,7 +32,7 @@ jobs:
           deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
 
       - name: Copy Repository Contents
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
         with:
           persist-credentials: false
 
