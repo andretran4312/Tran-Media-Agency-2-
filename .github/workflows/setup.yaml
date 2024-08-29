@@ -95,18 +95,4 @@ jobs:
           GH_EMAIL: ${{ github.event.commits[0].author.email }}
           GH_USERNAME: ${{ github.event.commits[0].author.username }}
 
-# - name: Open a PR
-#   uses: actions/github-script@0.5.0
-#   with:
-#     github-token: ${{secrets.GITHUB_TOKEN}}
-#     script: |
-#       var fs = require('fs');
-#       var contents = fs.readFileSync('_fastpages_docs/_setup_pr_template.md', 'utf8');
-#       github.pulls.create({
-#                     owner: context.repo.owner,
-#                     repo: context.repo.repo,
-#                     title: 'Initial Setup',
-#                     head: 'fastpages-automated-setup',
-#                     base: 'master',
-#                     body: `${contents}`
-#                     })
+
