@@ -34,24 +34,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install Dependencies with Bundler
-        run: |
-          bundle install
-      
-      - name: convert notebooks and word docs to posts
-        uses: ./_action_files
-
-      - name: setup directories for Jekyll build
-        run: |
-          rm -rf _site
-          sudo chmod -R 777 .
-
-      - name: Jekyll build
-        uses: docker://fastai/fastpages-jekyll
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          args: bash -c "jekyll build -V --strict_front_matter --trace"
-        env:
-          JEKYLL_ENV: "production"
+          ruby-version: '3.1'  # Specify the Ruby version needed
+
+      - name: Install Dependencies
+        run: bundle install
+
+      - name: Build the Jekyll Site
+        run: bundle exec jekyll build
 
       - name: copy CNAME file into _site if CNAME exists
         run: |
