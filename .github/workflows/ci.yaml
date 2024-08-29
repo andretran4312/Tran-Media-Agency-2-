@@ -34,9 +34,9 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install ffi Gem
+      - name: Install Dependencies with Bundler
         run: |
-          gem install ffi -v '1.17.1'  # Specify the version that is compatible with your environment
+          bundle install
       
       - name: convert notebooks and word docs to posts
         uses: ./_action_files
