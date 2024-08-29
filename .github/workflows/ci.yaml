@@ -17,7 +17,6 @@ permissions:
 
 jobs:
   build-site:
-    if: ( github.event.commits[0].message != 'Initial commit' ) || github.run_number > 1
     runs-on: ubuntu-latest
     steps:
       - name: Check if secret exists
@@ -36,6 +35,10 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Update RubyGems
+        run: |
+          gem update --system
+      
       - name: convert notebooks and word docs to posts
         uses: ./_action_files
 
@@ -62,4 +65,3 @@ jobs:
         with:
           deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
           publish_dir: ./_site
-#TEST
