@@ -62,3 +62,4 @@ jobs:
         with:
           deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
           publish_dir: ./_site
+#TEST
