@@ -2,8 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - master # need to filter here so we only deploy when there is a push to master
-  # no filters on pull requests, so intentionally left blank
+      - master
   pull_request:
   workflow_dispatch:
 
@@ -35,9 +34,9 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Update RubyGems
+      - name: Install ffi Gem
         run: |
-          gem update --system
+          gem install ffi -v '1.17.1'  # Specify the version that is compatible with your environment
       
       - name: convert notebooks and word docs to posts
         uses: ./_action_files
